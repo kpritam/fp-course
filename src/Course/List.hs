@@ -169,8 +169,8 @@ filter =
   List a
   -> List a
   -> List a
-(++) =
-  error "todo: Course.List#(++)"
+(++) f s =
+  foldRight (:.) s f
 
 infixr 5 ++
 
@@ -204,8 +204,8 @@ flatMap ::
   (a -> List b)
   -> List a
   -> List b
-flatMap =
-  error "todo: Course.List#flatMap"
+flatMap f xs =
+  foldRight (\a b -> f a ++ b) Nil xs
 
 -- | Flatten a list of lists to a list (again).
 -- HOWEVER, this time use the /flatMap/ function that you just wrote.
